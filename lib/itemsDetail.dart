@@ -21,38 +21,56 @@ class _itemDetail extends State<itemDetail> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SizedBox(
-        height: size.height,
-        child: Stack(
+      body: SingleChildScrollView(
+        child: Column(
           children: [
-            Container(
-              height: size.height *0.55,
-              width: size.width,
-              // child: Image.asset(widget.recipeItems.image),
-              decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(widget.recipeItems.image),fit: BoxFit.cover)
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20,vertical: 30),
-              child: CircleAvatar(
-                backgroundColor: Colors.black45,
-                child: InkWell(
-                  onTap: ()=> Navigator.pop(context),
-                    child: Icon(Icons.arrow_back,size: 18,color: Colors.white,)
+            Stack(
+              children: [
+                Container(
+                  height: size.height *0.55,
+                  width: size.width,
+                  // child: Image.asset(widget.recipeItems.image),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(image: AssetImage(widget.recipeItems.image),fit: BoxFit.cover)
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 4),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Colors.black45,
+                        child: InkWell(
+                            onTap: ()=> Navigator.pop(context),
+                            child: Icon(Icons.arrow_back,size: 18,color: Colors.white,)
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: widget.recipeItems.fav ? Colors.red : Colors.grey,
+                          boxShadow: const [
+                            BoxShadow(
+                              spreadRadius: 2,
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                        child: Icon(Icons.favorite_border,color: Colors.white,),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            Positioned(
-              bottom: 0,
-              child: Container(
+        Container(
                 padding: EdgeInsets.all(26),
-                height: size.height * 0.5,
+                // height: size.height * 0.5,
                 width: size.width,
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(60))
-                ),
+                  color: Colors.white,  ),
                 child: Column(
                   children: [
                     SizedBox(height: 5,),
@@ -177,25 +195,7 @@ class _itemDetail extends State<itemDetail> {
                   ],
                 ),
               ),
-            ),
-            Positioned(
-              bottom: size.height * 0.48,
-                right: 30,
-                child: Container(
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: widget.recipeItems.fav ? Colors.red : Colors.grey,
-                    boxShadow: const [
-                      BoxShadow(
-                        spreadRadius: 5,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
-                  child: Icon(Icons.favorite_border,color: Colors.white,),
-                )
-            ),
+
           ],
         ),
       ),

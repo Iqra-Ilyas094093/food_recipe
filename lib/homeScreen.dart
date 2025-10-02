@@ -38,7 +38,7 @@ class _HomeScreen extends State<HomeScreen> {
                     children: [
                       Text.rich(TextSpan(children: [
                         TextSpan(
-                            text: "Hello Furny!\n",
+                            text: "Hello Talawish Sikandar!\n",
                             style: GoogleFonts.openSans(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
